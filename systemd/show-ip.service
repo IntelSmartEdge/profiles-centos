@@ -1,0 +1,31 @@
+# INTEL CONFIDENTIAL
+#
+# Copyright 2019-2022 Intel Corporation.
+#
+# This software and the related documents are Intel copyrighted materials, and your use of
+# them is governed by the express license under which they were provided to you ("License").
+# Unless the License provides otherwise, you may not use, modify, copy, publish, distribute,
+# disclose or transmit this software or the related documents without Intel's prior written permission.
+#
+# This software and the related documents are provided as is, with no express or implied warranties,
+# other than those that are expressly stated in the License.
+
+
+[Unit]
+Description=Show IP Addresses at Boot Prompt
+Requires=network-online.target
+After=network-online.target
+Before=systemd-user-sessions.service
+Before=seo.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+StandardError=null
+StandardOutput=null
+WorkingDirectory=/tmp
+ExecStart=/bin/sh -c "until ip -o -4 addr show | grep global | grep -v docker; do sleep 0.3; ct=$(($ct + 1)); if [ $ct -ge 33 ]; then break; fi; done && echo \"$(cat /etc/os-release | grep PRETTY_NAME | awk -F \\\" '{print $2}')) $(uname -o) $(uname -r) $(uname -m) \\l\n\nIP Address:\n$(ip -o -4 addr list $(ip route show 0.0.0.0/0 | awk '{print $5}') | head -1 | awk '{print $4}' | cut -d/ -f1)\n\nRoutes:\n$(ip route show)\n\nLANs:\n$(ip -o -4 addr list)\n\" > /etc/issue"
+ExecStop=/bin/sh -c "echo bye"
+
+[Install]
+WantedBy=network-online.target

@@ -1,0 +1,36 @@
+# INTEL CONFIDENTIAL
+#
+# Copyright 2019-2022 Intel Corporation.
+#
+# This software and the related documents are Intel copyrighted materials, and your use of
+# them is governed by the express license under which they were provided to you ("License").
+# Unless the License provides otherwise, you may not use, modify, copy, publish, distribute,
+# disclose or transmit this software or the related documents without Intel's prior written permission.
+#
+# This software and the related documents are provided as is, with no express or implied warranties,
+# other than those that are expressly stated in the License.
+
+# Repository address
+# Format must be: `github.com/org/repo` - no https://
+# It'll be concated with protocol and token
+export url=github.com/smart-edge-open/open-developer-experience-kits
+
+# Github token
+export gh_token=
+
+# Branch to checkout on cloning
+export branch=main
+
+# Experience Kit flavor
+export flavor=dek
+
+# either `single-node` or `multi-node`
+export scenario=single-node
+
+# MAC address of Controller's primary interface
+# Used in deployment of multi node cluster
+# If empty, it is assumed that machine is a Controller
+export controller_mac=
+
+# Path where Experience Kits will be cloned to
+export ek_path=
