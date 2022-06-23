@@ -12,7 +12,7 @@
 # other than those that are expressly stated in the License.
 ```
 
-# ESP profile for Smart Edge Open
+# ESP profile for Smart Edge Open Experience Kits
 
 This directory contains profile for the Edge Software Provisioner (ESP) used for provisioning a bare metal machine with Centos 7.9 system and deployed any Smart Edge Open experience kit.
 

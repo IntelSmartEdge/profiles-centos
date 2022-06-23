@@ -34,7 +34,7 @@ controller_mac=${controller_mac}
 # shellcheck disable=SC2269 # variable origin: provision_settings
 ek_path=${ek_path}
 # shellcheck disable=SC2269 # variable origin: provision_settings
-flavor=${flavor}
+deployment=${deployment}
 
 # Add non-root user to sudoers
 echo "${param_username} ALL=(ALL) NOPASSWD:ALL" | tee "/etc/sudoers.d/${param_username}"
@@ -81,7 +81,7 @@ if [ "${is_controller}" == "yes" ]; then
     # Inventory for controller
     wget --header "Authorization: token ${param_token}" -O inventory.yml.tpl2 "${param_bootstrapurl}/files/seo/inventories/controller.yml"
     # shellcheck disable=SC2016 # envsubst needs the environment variables unexpanded
-    envsubst '$flavor,$param_username' < inventory.yml.tpl2 > inventory.yml.tpl
+    envsubst '$deployment,$param_username' < inventory.yml.tpl2 > inventory.yml.tpl
 
     rm -rf ./inventory.yml.tpl2
 else
@@ -98,7 +98,7 @@ else
     # Inventory for node
     wget --header "Authorization: token ${param_token}" -O inventory.yml.tpl2 "${param_bootstrapurl}/files/seo/inventories/node.yml"
     # shellcheck disable=SC2016 # envsubst needs the environment variables unexpanded
-    envsubst '$controller_address,$flavor,$param_username' < inventory.yml.tpl2 > inventory.yml.tpl
+    envsubst '$controller_address,$deployment,$param_username' < inventory.yml.tpl2 > inventory.yml.tpl
 
     rm -rf ./inventory.yml.tpl2
 fi

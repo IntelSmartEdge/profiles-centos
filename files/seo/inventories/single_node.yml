@@ -13,8 +13,7 @@
 all:
   vars:
     cluster_name: seo_dek
-    flavor: $flavor
-    deployment: $flavor
+    deployment: $deployment
     single_node_deployment: true
     limit:
 controller_group:

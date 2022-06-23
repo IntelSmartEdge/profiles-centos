@@ -13,8 +13,7 @@
 all:
   vars:
     cluster_name: smart_edge_open_multi_node
-    flavor: $flavor
-    deployment: $flavor
+    deployment: $deployment
     single_node_deployment: false
     limit: edgenode_group
 controller_group:

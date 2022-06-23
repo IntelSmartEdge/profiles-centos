@@ -12,4 +12,4 @@
 # This software and the related documents are provided as is, with no express or implied warranties,
 # other than those that are expressly stated in the License.
 
-kernel_arguments: diskencrypt=false release=prod centosversion=7 username=openness password=openness123
+kernel_arguments: diskencrypt=false release=prod centosversion=7

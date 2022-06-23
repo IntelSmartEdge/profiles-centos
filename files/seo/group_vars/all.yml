@@ -10,13 +10,3 @@
 # This software and the related documents are provided as is, with no express or implied warranties,
 # other than those that are expressly stated in the License.
 
-git_repo_token: ""
-
-proxy_env:
-  http_proxy: ""
-  https_proxy: ""
-  ftp_proxy: ""
-  no_proxy: ""
-
-ntp_enable: false
-ntp_servers: ['']
